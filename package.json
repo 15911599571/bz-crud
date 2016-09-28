@@ -1,7 +1,7 @@
 {
-  "name": "bz-crud",
-  "version": "1.0.1",
-  "description": "bz-crud",
+  "name": "bz-demo",
+  "version": "1.0.0",
+  "description": "bz-demo",
   "main": "dist/main.js",
   "keywords": [
     "vue",
@@ -11,12 +11,12 @@
   "author": "bigzhu <vermiliondun@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bigzhu/bz-crud.git"
+    "url": "git+https://github.com/bigzhu/bz-demo.git"
   },
   "bugs": {
-    "url": "https://github.com/bigzhu/bz-crud/issues"
+    "url": "https://github.com/bigzhu/bz-demo/issues"
   },
-  "homepage": "https://github.com/bigzhu/bz-crud#readme",
+  "homepage": "https://github.com/bigzhu/bz-demo#readme",
   "files": [
     "dist"
   ],
