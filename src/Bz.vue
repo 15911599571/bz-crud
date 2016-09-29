@@ -37,6 +37,7 @@
 
 <script>
   import _ from 'underscore'
+  import {dateFormat} from './lib_bz/functions/time.js'
   import 'bz-semantic-ui-form'
   import 'bz-semantic-ui-table'
   import 'bz-semantic-ui-button'
@@ -65,12 +66,17 @@
             name_key: 'avatar',
             name_show: '头像',
             type: 'img'
+          },
+          {
+            name_key: 'birthday',
+            name_show: '生日',
+            type: 'datetime'
           }
         ],
         body: [
-          { name: '古尸', sex: '女', avatar: 'https://follow.center/api_sp/YUhSMGNITTZMeTl3WW5NdWRIZHBiV2N1WTI5dEwzQnliMlpwYkdWZmFXMWhaMlZ6THpjMk16QTNOemM0TnpRNE9Ua3pOVE0yTUM5R1pqSnFjWEkzZWk1cWNHYz0='
+          { name: '古尸', sex: '女', avatar: 'https://follow.center/api_sp/YUhSMGNITTZMeTl3WW5NdWRIZHBiV2N1WTI5dEwzQnliMlpwYkdWZmFXMWhaMlZ6THpjMk16QTNOemM0TnpRNE9Ua3pOVE0yTUM5R1pqSnFjWEkzZWk1cWNHYz0=', birthday: 1475137305871
           },
-          { name: 'liu勇', sex: '男', avatar: 'https://follow.center/api_sp/YUhSMGNITTZMeTl3WW5NdWRIZHBiV2N1WTI5dEwyMWxaR2xoTDBOMFpWUkVkRlZZUlVGQk5YQnJOUzVxY0djNmIzSnBadz09'
+          { name: 'liu勇', sex: '男', avatar: 'https://follow.center/api_sp/YUhSMGNITTZMeTl3WW5NdWRIZHBiV2N1WTI5dEwyMWxaR2xoTDBOMFpWUkVkRlZZUlVGQk5YQnJOUzVxY0djNmIzSnBadz09', birthday: 1475137305871
           }
         ]
       }
@@ -79,9 +85,9 @@
     },
     methods: {
       showTd: function (type, value) {
-        console.log(type)
         if (_.contains(['input', 'radio'], type)) return value
         if (type === 'img') return `<img src='${value}'></img>`
+        if (type === 'datetime') return dateFormat(value, 'YYYY年MM月')
       }
     }
   }
