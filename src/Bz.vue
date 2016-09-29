@@ -1,6 +1,6 @@
 <style lang=less>
   img {
-    width: 20px;
+    width: 60px;
   }
 </style>
 
@@ -18,36 +18,25 @@
     </div>
   </form>
   <table class="ui celled table">
-      <thead>
-        <tr><th>Header</th>
-          <th>Header</th>
-          <th>Header</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-        </tr>
-        <tr>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td><img src="http://cn.vuejs.org/images/logo.png"  class="ui mini rounded image"/></td>
-        </tr>
-        <tr>
-          <td>Cell</td>
-          <td>Cell</td>
-          <td>Cell</td>
-        </tr>
-      </tbody>
-      <!--
-      <tfoot> 分页 </tfoot>
-      -->
-    </table>
+    <thead>
+      <tr>
+        <th v-for='h in header'>{{h.name_show}}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="b in body">
+        <td v-for="h in header" v-html="showTd(h.type, b[h.name_key])">
+        </td>
+      </tr>
+    </tbody>
+    <!--
+    <tfoot> 分页 </tfoot>
+    -->
+  </table>
 </template>
 
 <script>
+  import _ from 'underscore'
   import 'bz-semantic-ui-form'
   import 'bz-semantic-ui-table'
   import 'bz-semantic-ui-button'
@@ -60,11 +49,40 @@
     },
     data: function () {
       return {
+        header: [
+          {
+            name_key: 'name',
+            name_show: '姓名',
+            type: 'input'
+          },
+          {
+            name_key: 'sex',
+            name_show: '性别',
+            type: 'radio',
+            values: ['男', '女']
+          },
+          {
+            name_key: 'avatar',
+            name_show: '头像',
+            type: 'img'
+          }
+        ],
+        body: [
+          { name: '古尸', sex: '女', avatar: 'https://follow.center/api_sp/YUhSMGNITTZMeTl3WW5NdWRIZHBiV2N1WTI5dEwzQnliMlpwYkdWZmFXMWhaMlZ6THpjMk16QTNOemM0TnpRNE9Ua3pOVE0yTUM5R1pqSnFjWEkzZWk1cWNHYz0='
+          },
+          { name: 'liu勇', sex: '男', avatar: 'https://follow.center/api_sp/YUhSMGNITTZMeTl3WW5NdWRIZHBiV2N1WTI5dEwyMWxaR2xoTDBOMFpWUkVkRlZZUlVGQk5YQnJOUzVxY0djNmIzSnBadz09'
+          }
+        ]
       }
     },
     ready () {
     },
     methods: {
+      showTd: function (type, value) {
+        console.log(type)
+        if (_.contains(['input', 'radio'], type)) return value
+        if (type === 'img') return `<img src='${value}'></img>`
+      }
     }
   }
 </script>
