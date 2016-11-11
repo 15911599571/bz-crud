@@ -1,5 +1,3 @@
-<style>
-</style>
 <template>
   <div>
     <doc :name="name"

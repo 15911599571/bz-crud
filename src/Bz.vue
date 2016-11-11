@@ -1,4 +1,4 @@
-<style lang=less>
+<style>
   img {
     width: 60px;
   }
@@ -38,9 +38,6 @@
 <script>
   import _ from 'underscore'
   import {dateFormat} from './lib_bz/functions/time.js'
-  import 'bz-semantic-ui-form'
-  import 'bz-semantic-ui-table'
-  import 'bz-semantic-ui-button'
   export default {
     props: {
       call_back: {
