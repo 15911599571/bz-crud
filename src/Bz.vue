@@ -1,4 +1,4 @@
-<style lang=less>
+<style>
   img {
     width: 60px;
   }
